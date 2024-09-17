@@ -131,3 +131,59 @@ export const deliverOrder = (order) => async (dispatch, getState) => {
     );
   }
 };
+
+export const listMyOrders = () => async (dispatch, getState) => {
+    try {
+      dispatch(orderListMyActions.orderListMyRequest());
+  
+      const {
+        userLogin: { userInfo },
+      } = getState();
+  
+      const config = {
+        headers: {
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      };
+  
+      const { data } = await axios.get(`/api/orders/myorders`, config);
+  
+      dispatch(orderListMyActions.orderListMySuccess(data));
+    } catch (error) {
+      dispatch(
+        orderListMyActions.orderListMyFail(
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message
+        )
+      );
+    }
+  };
+  
+  export const listOrders = () => async (dispatch, getState) => {
+    try {
+      dispatch(orderListActions.orderListRequest());
+  
+      const {
+        userLogin: { userInfo },
+      } = getState();
+  
+      const config = {
+        headers: {
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      };
+  
+      const { data } = await axios.get(`/api/orders`, config);
+  
+      dispatch(orderListActions.orderListSuccess(data));
+    } catch (error) {
+      dispatch(
+        orderListActions.orderListFail(
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message
+        )
+      );
+    }
+  };
