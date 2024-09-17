@@ -104,3 +104,66 @@ export const createProduct = () => async (dispatch, getState) => {
     );
   }
 };
+
+export const updateProduct = (product) => async (dispatch, getState) => {
+    try {
+      dispatch(productUpdateActions.productUpdateRequest());
+  
+      const {
+        userLogin: { userInfo },
+      } = getState();
+  
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      };
+  
+      const { data } = await axios.put(
+        `/api/products/${product._id}`,
+        product,
+        config
+      );
+  
+      dispatch(productUpdateActions.productUpdateSuccess(data));
+    } catch (error) {
+      dispatch(
+        productUpdateActions.productUpdateFail(
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message
+        )
+      );
+    }
+  };
+  
+  export const createProductReview =
+    (productId, review) => async (dispatch, getState) => {
+      try {
+        dispatch(productCreateReviewActions.productCreateReviewRequest());
+  
+        const {
+          userLogin: { userInfo },
+        } = getState();
+  
+        const config = {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${userInfo.token}`,
+          },
+        };
+  
+        await axios.post(`/api/products/${productId}/reviews`, review, config);
+  
+        dispatch(productCreateReviewActions.productCreateReviewSuccess());
+      } catch (error) {
+        dispatch(
+          productCreateReviewActions.productCreateReviewFail(
+            error.response && error.response.data.message
+              ? error.response.data.message
+              : error.message
+          )
+        );
+      }
+    };
