@@ -89,3 +89,54 @@ const Sidebar = () => {
           </ul>
         </div>
       </div>
+      {menuIsShown && (
+        <div
+          className="hidden lg:block z-[49] absolute bg-white opacity-60 top-0 bottom-0 right-0"
+          style={{ left: `${sideBarWidth}px` }}
+          onClick={toggleMenuHandler}
+        />
+      )}
+      {menuIsShown && (
+        <div
+          className={`hidden z-50 lg:flex items-center px-20 py-10 absolute top-0 bottom-0 w-1/3 h-full bg-palette-chineseBlack border-l border-l-[#202020]`}
+          style={{ left: `${sideBarWidth}px` }}
+        >
+          <ul className="text-white uppercase font-normal text-4xl space-y-5">
+            <li className="tracking-wider">
+              <Link to="/">Shop</Link>
+            </li>
+
+            <li className="tracking-wider">
+              <Link to="/about">About</Link>
+            </li>
+
+            <li className="tracking-wider">
+              <Link to="/contact">Contact</Link>
+            </li>
+          </ul>
+        </div>
+      )}
+      {menuIsShown && (
+        <div
+          className={`flex lg:hidden justify-center items-center p-5 fixed left-0 right-0 top-[80px] bottom-0 bg-palette-chineseBlack z-[21] border-t border-t-[#202020]`}
+        >
+          <ul className="text-white uppercase font-normal text-center text-3xl space-y-5">
+            <li className="tracking-wider">
+              <Link to="/">Shop</Link>
+            </li>
+
+            <li className="tracking-wider">
+              <Link to="/about">About</Link>
+            </li>
+
+            <li className="tracking-wider">
+              <Link to="/contact">Contact</Link>
+            </li>
+          </ul>
+        </div>
+      )}
+    </>
+  );
+};
+
+export default Sidebar;
