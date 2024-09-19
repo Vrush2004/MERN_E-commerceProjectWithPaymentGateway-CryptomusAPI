@@ -84,3 +84,98 @@ const userUpdateProfileSlice = createSlice({
     },
   },
 });
+
+// USERS LIST SLICE
+const userListInitialState = { users: [] };
+
+const userListSlice = createSlice({
+  name: "userList",
+  initialState: userListInitialState,
+  reducers: {
+    userListRequest(state, action) {
+      return { loading: true };
+    },
+    userListSuccess(state, action) {
+      return { loading: false, users: action.payload };
+    },
+    userListFail(state, action) {
+      return { loading: false, error: action.payload };
+    },
+    userListReset(state, action) {
+      return { users: [] };
+    },
+  },
+});
+
+// USER DELETE SLICE
+const userDeleteInitialState = {};
+
+const userDeleteSlice = createSlice({
+  name: "userDelete",
+  initialState: userDeleteInitialState,
+  reducers: {
+    userDeleteRequest(state, action) {
+      return { loading: true };
+    },
+    userDeleteSuccess(state, action) {
+      return { loading: false, success: true };
+    },
+    userDeleteFail(state, action) {
+      return { loading: false, error: action.payload };
+    },
+  },
+});
+
+// USER UPDATE SLICE
+const userUpdateInitialState = { user: {} };
+
+const userUpdateSlice = createSlice({
+  name: "userUpdate",
+  initialState: userUpdateInitialState,
+  reducers: {
+    userUpdateRequest(state, action) {
+      return { loading: true };
+    },
+    userUpdateSuccess(state, action) {
+      return { loading: false, success: true };
+    },
+    userUpdateFail(state, action) {
+      return { loading: false, error: action.payload };
+    },
+    userUpdateReset(state, action) {
+      return { user: {} };
+    },
+  },
+});
+
+const userLoginActions = userLoginSlice.actions;
+const userLoginReducer = userLoginSlice.reducer;
+const userRegisterActions = userRegisterSlice.actions;
+const userRegisterReducer = userRegisterSlice.reducer;
+const userDetailsActions = userDetailsSlice.actions;
+const userDetailsReducer = userDetailsSlice.reducer;
+const userUpdateProfileActions = userUpdateProfileSlice.actions;
+const userUpdateProfileReducer = userUpdateProfileSlice.reducer;
+const userListActions = userListSlice.actions;
+const userListReducer = userListSlice.reducer;
+const userDeleteActions = userDeleteSlice.actions;
+const userDeleteReducer = userDeleteSlice.reducer;
+const userUpdateActions = userUpdateSlice.actions;
+const userUpdateReducer = userUpdateSlice.reducer;
+
+export {
+  userLoginActions,
+  userLoginReducer,
+  userRegisterActions,
+  userRegisterReducer,
+  userDetailsActions,
+  userDetailsReducer,
+  userUpdateProfileActions,
+  userUpdateProfileReducer,
+  userListActions,
+  userListReducer,
+  userDeleteActions,
+  userDeleteReducer,
+  userUpdateActions,
+  userUpdateReducer,
+};
