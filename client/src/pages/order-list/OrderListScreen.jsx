@@ -60,3 +60,80 @@ const OrderListScreen = () => {
                           <span>ID</span>
                         </div>
                       </th>
+
+                      <th
+                        scope="col"
+                        className="px-12 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
+                      >
+                        <div className="flex items-center gap-x-3">
+                          <span>USER</span>
+                        </div>
+                      </th>
+
+                      <th
+                        scope="col"
+                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
+                      >
+                        <div className="flex items-center gap-x-3">
+                          <span>DATE</span>
+                        </div>
+                      </th>
+
+                      <th
+                        scope="col"
+                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
+                      >
+                        TOTAL
+                      </th>
+                      <th
+                        scope="col"
+                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
+                      >
+                        PAID
+                      </th>
+                      <th
+                        scope="col"
+                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
+                      >
+                        DELIVERED
+                      </th>
+
+                      <th scope="col" className="relative py-3.5 px-4"></th>
+                    </tr>
+                  </thead>
+                  <tbody className="bg-white divide-y divide-gray-200">
+                    {orders.map((order) => (
+                      <tr key={order._id}>
+                        <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                          <div className="inline-flex items-center gap-x-3">
+                            <div className="flex items-center gap-x-2">
+                              <div>
+                                <h2 className="font-medium text-gray-800">
+                                  {order._id}
+                                </h2>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                        <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                          <div className="inline-flex items-center gap-x-3">
+                            <div className="flex items-center gap-x-2">
+                              <div>
+                                <h2 className="font-medium text-gray-800">
+                                  {order.user && order.user.name}
+                                </h2>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                        <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                          <div className="inline-flex items-center gap-x-3">
+                            <div className="flex items-center gap-x-2">
+                              <div>
+                                <h2 className="font-medium text-gray-800">
+                                  {order.createdAt.substring(0, 10)}
+                                </h2>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
