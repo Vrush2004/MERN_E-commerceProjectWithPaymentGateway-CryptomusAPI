@@ -137,3 +137,68 @@ const OrderListScreen = () => {
                             </div>
                           </div>
                         </td>
+                        <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                          <div className="inline-flex items-center gap-x-3">
+                            <div className="flex items-center gap-x-2">
+                              <div>
+                                <h2 className="font-medium text-gray-800">
+                                  ${order.totalPrice}
+                                </h2>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                        <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                          <div className="inline-flex items-center gap-x-3">
+                            <div className="flex items-center gap-x-2">
+                              <div>
+                                <h2 className="font-medium text-gray-800">
+                                  {order.isPaid ? (
+                                    order.paidAt.substring(0, 10)
+                                  ) : (
+                                    <RxCross1 className="text-red-500" />
+                                  )}
+                                </h2>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                        <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                          <div className="inline-flex items-center gap-x-3">
+                            <div className="flex items-center gap-x-2">
+                              <div>
+                                <h2 className="font-medium text-gray-800">
+                                  {order.isDelivered ? (
+                                    order.deliveredAt.substring(0, 10)
+                                  ) : (
+                                    <RxCross1 className="text-red-500" />
+                                  )}
+                                </h2>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                        <td class="px-4 py-4 text-sm whitespace-nowrap">
+                          <div class="flex space-x-2 items-center gap-x-6">
+                            <Link
+                              to={`/order/${order._id}`}
+                              class="text-gray-600 transition-colors duration-200 hover:text-green-500 focus:outline-none"
+                            >
+                              <AiOutlineEye className="h-5 w-auto" />
+                            </Link>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        )}
+      </section>
+    </Layout>
+  );
+};
+
+export default OrderListScreen;
