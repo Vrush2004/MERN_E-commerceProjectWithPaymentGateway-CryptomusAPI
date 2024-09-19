@@ -87,3 +87,75 @@ const productCreateSlice = createSlice({
     },
   },
 });
+
+// PRODUCT UPDATE SLICE
+const productUpdateInitialState = { product: {} };
+
+const productUpdateSlice = createSlice({
+  name: "productUpdate",
+  initialState: productUpdateInitialState,
+  reducers: {
+    productUpdateRequest(state) {
+      return { loading: true };
+    },
+    productUpdateSuccess(state, action) {
+      return { loading: false, success: true, product: action.payload };
+    },
+    productUpdateFail(state, action) {
+      return { loading: false, error: action.payload };
+    },
+    productUpdateReset(state, action) {
+      return { product: {} };
+    },
+  },
+});
+
+// PRODUCT CREATE REVIEW SLICE
+const productCreateReviewInitialState = {};
+
+const productCreateReviewSlice = createSlice({
+  name: "productCreateReview",
+  initialState: productCreateReviewInitialState,
+  reducers: {
+    productCreateReviewRequest(state) {
+      return { loading: true };
+    },
+    productCreateReviewSuccess(state, action) {
+      return { loading: false, success: true };
+    },
+    productCreateReviewFail(state, action) {
+      return { loading: false, error: action.payload };
+    },
+    productCreateReviewReset(state, action) {
+      return {};
+    },
+  },
+});
+
+const productListActions = productListSlice.actions;
+const productListReducer = productListSlice.reducer;
+const productDetailsActions = productDetailsSlice.actions;
+const productDetailReducer = productDetailsSlice.reducer;
+const productDeleteActions = productDeleteSlice.actions;
+const productDeleteReducer = productDeleteSlice.reducer;
+const productCreateActions = productCreateSlice.actions;
+const productCreateReducer = productCreateSlice.reducer;
+const productUpdateActions = productUpdateSlice.actions;
+const productUpdateReducer = productUpdateSlice.reducer;
+const productCreateReviewActions = productCreateReviewSlice.actions;
+const productCreateReviewReducer = productCreateReviewSlice.reducer;
+
+export {
+  productListActions,
+  productListReducer,
+  productDetailsActions,
+  productDetailReducer,
+  productDeleteActions,
+  productDeleteReducer,
+  productCreateActions,
+  productCreateReducer,
+  productUpdateActions,
+  productUpdateReducer,
+  productCreateReviewActions,
+  productCreateReviewReducer,
+};
