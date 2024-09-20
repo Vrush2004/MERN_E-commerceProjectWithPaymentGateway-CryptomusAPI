@@ -150,3 +150,94 @@ const ProductEditScreen = () => {
                 onChange={inputChangeHandler}
               />
             </div>
+            <div className="form-control">
+              <label className="label" htmlFor="image">
+                <span className="label-text">Image</span>
+              </label>
+              <input
+                className="input input-bordered"
+                id="image"
+                type="text"
+                placeholder="Enter image url"
+                value={inputValues.image}
+                name="image"
+                onChange={inputChangeHandler}
+              />
+              <input
+                type="file"
+                className="file-input w-full max-w-xs"
+                onChange={uploadFileHandler}
+              />
+              {uploading && <Loader />}
+            </div>
+            <div className="form-control">
+              <label className="label" htmlFor="brand">
+                <span className="label-text">Brand</span>
+              </label>
+              <input
+                className="input input-bordered"
+                id="brand"
+                type="text"
+                placeholder="Enter brand"
+                value={inputValues.brand}
+                name="brand"
+                onChange={inputChangeHandler}
+              />
+            </div>
+            <div className="form-control">
+              <label className="label" htmlFor="category">
+                <span className="label-text">Category</span>
+              </label>
+              <input
+                className="input input-bordered"
+                id="category"
+                type="text"
+                placeholder="Enter category"
+                value={inputValues.category}
+                name="category"
+                onChange={inputChangeHandler}
+              />
+            </div>
+            <div className="form-control">
+              <label className="label" htmlFor="countInStock">
+                <span className="label-text">Count In Stock</span>
+              </label>
+              <input
+                className="input input-bordered"
+                id="countInStock"
+                type="number"
+                placeholder="Enter count in stock"
+                value={inputValues.countInStock}
+                name="countInStock"
+                onChange={inputChangeHandler}
+              />
+            </div>
+            <div className="form-control">
+              <label className="label" htmlFor="description">
+                <span className="label-text">Description</span>
+              </label>
+              <input
+                className="input input-bordered"
+                id="description"
+                type="text"
+                placeholder="Enter description"
+                value={inputValues.description}
+                name="description"
+                onChange={inputChangeHandler}
+              />
+            </div>
+            <button
+              type="submit"
+              disabled={loadingUpdate}
+              className="btn w-full mt-5"
+            >
+              {loadingUpdate ? "Loading..." : "Update"}
+            </button>
+          </form>
+        )}
+      </FormContainer>
+    </Layout>
+  );
+};
+
+export default ProductEditScreen;
