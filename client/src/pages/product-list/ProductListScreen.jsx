@@ -191,4 +191,59 @@ const ProductListScreen = () => {
                               </div>
                             </div>
                           </td>
+                          <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                            <div className="inline-flex items-center gap-x-3">
+                              <div className="flex items-center gap-x-2">
+                                <div>
+                                  <h2 className="font-medium text-gray-800">
+                                    {product.category}
+                                  </h2>
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                          <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                            <div className="inline-flex items-center gap-x-3">
+                              <div className="flex items-center gap-x-2">
+                                <div>
+                                  <h2 className="font-medium text-gray-800">
+                                    {product.brand}
+                                  </h2>
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                          <td class="px-4 py-4 text-sm whitespace-nowrap">
+                            <div class="flex space-x-2 items-center gap-x-6">
+                              <Link
+                                to={`/admin/product/${product._id}/edit`}
+                                class="text-gray-600 transition-colors duration-200 hover:text-green-500 focus:outline-none"
+                              >
+                                <AiOutlineEdit className="h-5 w-auto" />
+                              </Link>
+                              <button
+                                onClick={() =>
+                                  deleteHandler(product._id, product.name)
+                                }
+                              >
+                                <AiOutlineDelete className="h-5 w-auto text-red-500" />
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <Pagination pages={pages} page={page} className="mt-5" isAdmin={true} />
+          </>
+        )}
+      </section>
+    </Layout>
+  );
+};
+
+export default ProductListScreen;
 
