@@ -69,3 +69,84 @@ const ProductEditScreen = () => {
       }
     }
   }, [dispatch, navigate, userLoginInfo, product, productId, successUpdate]);
+
+  const inputChangeHandler = (e) => {
+    const { value, name } = e.target;
+    setInputValues((curState) => {
+      return { ...curState, [name]: value };
+    });
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    dispatch(updateProduct({ _id: productId, ...inputValues }));
+  };
+
+  const uploadFileHandler = async (e) => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append("image", file);
+    setUploading(true);
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      };
+      const { data } = await axios.post("/api/upload", formData, config);
+      setInputValues((curState) => {
+        return { ...curState, image: data };
+      });
+      setUploading(false);
+    } catch (error) {
+      console.log(error);
+      setUploading(false);
+    }
+  };
+
+  return (
+    <Layout>
+      <Header className="justify-between">
+        <BackButton url="/admin/productlist" text="GO BACK" />
+        <div className="flex items-center divide-x divide-gray-200 border-x border-b border-gray-200">
+          <Cart className="hidden lg:block p-6 text-palette-graniteGray" />
+          <UserProfileButton className="hidden lg:block p-6 text-palette-graniteGray" />
+        </div>
+      </Header>
+      <FormContainer className="py-10 px-5">
+        <h1 className="text-3xl mb-6">Edit Product</h1>
+        {errorUpdate && <Alert variant="error">{errorUpdate}</Alert>}
+        {loading ? (
+          <Loader />
+        ) : error ? (
+          <Alert variant="error">{error}</Alert>
+        ) : (
+          <form onSubmit={submitHandler}>
+            <div className="form-control">
+              <label className="label" htmlFor="name">
+                <span className="label-text">Name</span>
+              </label>
+              <input
+                className="input input-bordered"
+                id="name"
+                type="text"
+                placeholder="Enter your name"
+                value={inputValues.name}
+                name="name"
+                onChange={inputChangeHandler}
+              />
+            </div>
+            <div className="form-control">
+              <label className="label" htmlFor="price">
+                <span className="label-text">Price</span>
+              </label>
+              <input
+                className="input input-bordered"
+                id="price"
+                type="number"
+                placeholder="Enter price"
+                value={inputValues.price}
+                name="price"
+                onChange={inputChangeHandler}
+              />
+            </div>
