@@ -130,3 +130,47 @@ const PlaceOrderScreen = () => {
               )}
             </div>
           </div>
+
+          <div className="w-full flex flex-col font-medium mt-8 lg:mt-0 lg:w-80">
+            <div className="space-y-2">
+              <div className="flex justify-between item-center">
+                <span className="text-gray-500">Items</span>
+                <span className="text-lime-700 font-bold">
+                  ${addDecimals(itemsPrice)}
+                </span>
+              </div>
+              <div className="flex justify-between item-center">
+                <span className="text-gray-500">Shipping</span>
+                <span className="text-lime-700 font-bold">
+                  ${addDecimals(shippingPrice)}
+                </span>
+              </div>
+              <div className="flex justify-between item-center">
+                <span className="text-gray-500">Tax</span>
+                <span className="text-lime-700 font-bold">
+                  ${addDecimals(taxPrice)}
+                </span>
+              </div>
+              <div className="flex justify-between item-center">
+                <span className="text-gray-500">Total</span>
+                <span className="text-lime-700 font-bold">
+                  ${addDecimals(totalPrice)}
+                </span>
+              </div>
+            </div>
+            {error && <Alert variant="error">{error}</Alert>}
+            <button
+              className="w-full text-white bg-black px-5 py-3 mt-4"
+              disabled={cartItems.length === 0}
+              onClick={placeOrderHandler}
+            >
+              Place Order
+            </button>
+          </div>
+        </div>
+      </div>
+    </Layout>
+  );
+};
+
+export default PlaceOrderScreen;
