@@ -171,3 +171,63 @@ const OrderScreen = () => {
                 )}
               </div>
             </div>
+
+            <div className="w-full flex flex-col font-medium mt-8 lg:mt-0 lg:w-80">
+              <div className="space-y-2">
+                <div className="flex justify-between item-center">
+                  <span className="text-gray-500">Items</span>
+                  <span className="text-lime-700 font-bold">
+                    ${addDecimals(order.itemsPrice)}
+                  </span>
+                </div>
+                <div className="flex justify-between item-center">
+                  <span className="text-gray-500">Shipping</span>
+                  <span className="text-lime-700 font-bold">
+                    ${addDecimals(order.shippingPrice)}
+                  </span>
+                </div>
+                <div className="flex justify-between item-center">
+                  <span className="text-gray-500">Tax</span>
+                  <span className="text-lime-700 font-bold">
+                    ${addDecimals(order.taxPrice)}
+                  </span>
+                </div>
+                <div className="flex justify-between item-center">
+                  <span className="text-gray-500">Total</span>
+                  <span className="text-lime-700 font-bold">
+                    ${addDecimals(order.totalPrice)}
+                  </span>
+                </div>
+              </div>
+              {!order.isPaid && order.user._id === userInfo._id && (
+                <button
+                  type="button"
+                  className="w-full text-white bg-black px-5 py-3 mt-4 disabled:opacity-70"
+                  disabled={order.orderItems.length === 0 || paymentLoading}
+                  onClick={payOrderHandler}
+                >
+                  Pay
+                </button>
+              )}
+              {userInfo &&
+                userInfo.isAdmin &&
+                order.isPaid &&
+                !order.isDelivered && (
+                  <button
+                    type="button"
+                    className="w-full text-white bg-green-500 px-5 py-3 mt-4 disabled:opacity-70"
+                    disabled={loadingDeliver}
+                    onClick={deliverHandler}
+                  >
+                    Mark As Delivered
+                  </button>
+                )}
+            </div>
+          </div>
+        )}
+      </div>
+    </Layout>
+  );
+};
+
+export default OrderScreen;
