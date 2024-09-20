@@ -139,4 +139,56 @@ const ProductListScreen = () => {
                             <span>PRICE</span>
                           </div>
                         </th>
+                        <th
+                          scope="col"
+                          className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
+                        >
+                          CATEGORY
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
+                        >
+                          BRAND
+                        </th>
+
+                        <th scope="col" className="relative py-3.5 px-4"></th>
+                      </tr>
+                    </thead>
+                    <tbody className="bg-white divide-y divide-gray-200">
+                      {products.map((product) => (
+                        <tr key={product._id}>
+                          <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                            <div className="inline-flex items-center gap-x-3">
+                              <div className="flex items-center gap-x-2">
+                                <div>
+                                  <h2 className="font-medium text-gray-800">
+                                    {product._id}
+                                  </h2>
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                          <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                            <div className="inline-flex items-center gap-x-3">
+                              <div className="flex items-center gap-x-2">
+                                <div>
+                                  <h2 className="font-medium text-gray-800">
+                                    {product.name}
+                                  </h2>
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                          <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                            <div className="inline-flex items-center gap-x-3">
+                              <div className="flex items-center gap-x-2">
+                                <div>
+                                  <h2 className="font-medium text-gray-800">
+                                    ${product.price}
+                                  </h2>
+                                </div>
+                              </div>
+                            </div>
+                          </td>
 
