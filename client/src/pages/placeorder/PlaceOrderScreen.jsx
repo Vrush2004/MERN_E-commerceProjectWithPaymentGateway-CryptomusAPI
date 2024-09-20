@@ -53,3 +53,80 @@ const PlaceOrderScreen = () => {
       })
     );
   };
+
+  return (
+    <Layout>
+      <Header className="justify-end">
+        <div className="flex items-center divide-x divide-gray-200 border-x border-b border-gray-200">
+          <Cart className="hidden lg:block p-6 text-palette-graniteGray" />
+          <UserProfileButton className="hidden lg:block p-6 text-palette-graniteGray" />
+        </div>
+      </Header>
+      <div className="py-10 px-5">
+        <div className="w-full md:w-1/2 mx-auto">
+          <CheckoutSteps step1 step2 step3 step4 />
+        </div>
+
+        <div className="w-full flex flex-col lg:flex-row lg:justify-start lg:space-x-5 mt-5 lg:mt-10">
+          <div className="flex-1">
+            <div className="w-full pb-5 border-b border-gray-300">
+              <h2 className="text-xl font-semibold">Shipping</h2>
+              <p className="mt-2">
+                {shippingAddress.address}, {shippingAddress.city}{" "}
+                {shippingAddress.postalCode}, {shippingAddress.country}
+              </p>
+            </div>
+            <div className="w-full py-5 border-b border-gray-300">
+              <h2 className="text-xl font-semibold">Payment Method</h2>
+              <p className="mt-2">Method: {paymentMethod}</p>
+            </div>
+            <div className="w-full py-5 border-b border-gray-300">
+              <h2 className="text-xl font-semibold">Order Items</h2>
+              {cartItems.length === 0 ? (
+                <Alert variant="error">Your cart is empty</Alert>
+              ) : (
+                <section className="container px-4 mx-auto">
+                  <div className="flex flex-col mt-6">
+                    <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                      <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+                        <div className="overflow-hidden border border-gray-200  md:rounded-lg">
+                          <table className="min-w-full divide-y divide-gray-200">
+                            <tbody className="bg-white divide-y divide-gray-200">
+                              {cartItems.map((item, index) => (
+                                <tr key={index}>
+                                  <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                    <div className="inline-flex items-center gap-x-3">
+                                      <div className="flex items-center gap-x-2">
+                                        <img
+                                          className="object-cover w-10 aspect-square"
+                                          src={item.image}
+                                          alt={item.name}
+                                        />
+                                        <div>
+                                          <h2 className="font-medium text-gray-800">
+                                            {item.name}
+                                          </h2>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </td>
+                                  <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                    <div className="inline-flex items-center px-3 py-1 rounded-full gap-x-2">
+                                      <h2 className="text-sm font-normal">
+                                        {item.qty} * {item.price} ={" "}
+                                        {(item.qty * item.price).toFixed(2)}
+                                      </h2>
+                                    </div>
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              )}
+            </div>
+          </div>
