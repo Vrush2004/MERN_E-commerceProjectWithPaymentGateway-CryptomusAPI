@@ -55,3 +55,55 @@ const ShippingScreen = () => {
               onChange={(e) => setAddress(e.target.value)}
             />
           </div>
+          <div className="form-control">
+            <label className="label" htmlFor="city">
+              <span className="label-text">City</span>
+            </label>
+            <input
+              className="input input-bordered"
+              id="city"
+              type="text"
+              placeholder="Enter your city"
+              value={city}
+              required
+              onChange={(e) => setCity(e.target.value)}
+            />
+          </div>
+          <div className="form-control">
+            <label className="label" htmlFor="postalCode">
+              <span className="label-text">Postal Code</span>
+            </label>
+            <input
+              className="input input-bordered"
+              id="postalCode"
+              type="text"
+              placeholder="Enter your postal code"
+              value={postalCode}
+              required
+              onChange={(e) => setPostalCode(e.target.value)}
+            />
+          </div>
+          <div className="form-control">
+            <label className="label" htmlFor="country">
+              <span className="label-text">Country</span>
+            </label>
+            <input
+              className="input input-bordered"
+              id="country"
+              type="text"
+              placeholder="Enter your country"
+              value={country}
+              required
+              onChange={(e) => setCountry(e.target.value)}
+            />
+          </div>
+          <button type="submit" className="btn w-full mt-5">
+            Continue
+          </button>
+        </form>
+      </FormContainer>
+    </Layout>
+  );
+};
+
+export default ShippingScreen;
