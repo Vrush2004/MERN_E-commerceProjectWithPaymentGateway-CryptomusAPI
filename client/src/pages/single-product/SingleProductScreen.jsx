@@ -111,3 +111,67 @@ const SingleProductScreen = () => {
                       emptySymbol={<AiOutlineStar />}
                       fullSymbol={<AiFillStar />}
                     />
+                    <p>{review.comment}</p>
+                    <p className="text-xs">
+                      {review.createdAt.substring(0, 10)}
+                    </p>
+                  </li>
+                ))}
+                <li className="mt-10">
+                  <h2 className="text-2xl font-semibold mb-5">
+                    Write a Customer Review
+                  </h2>
+                  {errorProductReview && (
+                    <Alert variant="error" className="mb-5">
+                      {errorProductReview}
+                    </Alert>
+                  )}
+                  {userInfo ? (
+                    <form onSubmit={submitHandler}>
+                      <div className="form-control">
+                        <Rating
+                          className="flex items-center text-palette-chineseBlack"
+                          initialRating={rating}
+                          readonly={false}
+                          fractions={2}
+                          emptySymbol={<AiOutlineStar />}
+                          fullSymbol={<AiFillStar />}
+                          onChange={(rateNumber) => setRating(rateNumber)}
+                        />
+                      </div>
+                      <div className="form-control mt-3">
+                        <textarea
+                          className="textarea textarea-bordered"
+                          placeholder="comment..."
+                          value={comment}
+                          onChange={(e) => setComment(e.target.value)}
+                        />
+                      </div>
+                      <button
+                        type="submit"
+                        className="btn mt-3"
+                        disabled={loadingProductReview}
+                      >
+                        Submit
+                      </button>
+                    </form>
+                  ) : (
+                    <Alert variant="warning" className="mt-5">
+                      Please{" "}
+                      <Link to="/login" className="link">
+                        sign in
+                      </Link>{" "}
+                      to write a review
+                    </Alert>
+                  )}
+                </li>
+              </ul>
+            </div>
+          </>
+        )}
+      </main>
+    </Layout>
+  );
+};
+
+export default SingleProductScreen;
