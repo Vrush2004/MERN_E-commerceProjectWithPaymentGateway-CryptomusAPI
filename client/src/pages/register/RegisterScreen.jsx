@@ -83,3 +83,67 @@ const RegisterScreen = () => {
               name="name"
               onChange={inputChangeHandler}
             />
+            </div>
+          <div className="form-control">
+            <label className="label" htmlFor="email">
+              <span className="label-text">Email Address</span>
+            </label>
+            <input
+              className="input input-bordered"
+              id="email"
+              type="email"
+              placeholder="Enter email"
+              value={inputValues.email}
+              name="email"
+              onChange={inputChangeHandler}
+            />
+          </div>
+          <div className="form-control">
+            <label className="label" htmlFor="password">
+              <span className="label-text">Pasword</span>
+            </label>
+            <input
+              className="input input-bordered"
+              id="password"
+              type="password"
+              placeholder="Enter password"
+              value={inputValues.password}
+              name="password"
+              onChange={inputChangeHandler}
+            />
+          </div>
+          <div className="form-control">
+            <label className="label" htmlFor="confirmPassword">
+              <span className="label-text">Confirm Password</span>
+            </label>
+            <input
+              className="input input-bordered"
+              id="confirmPassword"
+              type="password"
+              placeholder="Enter Confirm password"
+              value={inputValues.confirmPassword}
+              name="confirmPassword"
+              onChange={inputChangeHandler}
+            />
+          </div>
+          <button type="submit" disabled={loading} className="btn w-full mt-5">
+            {loading ? "Loading..." : "Register"}
+          </button>
+        </form>
+        <div className="py-3">
+          <div>
+            Have an Account?{" "}
+            <Link
+              to={redirect ? `/login?redirect=${redirect}` : "/login"}
+              className="link"
+            >
+              Login
+            </Link>
+          </div>
+        </div>
+      </FormContainer>
+    </Layout>
+  );
+};
+
+export default RegisterScreen;
