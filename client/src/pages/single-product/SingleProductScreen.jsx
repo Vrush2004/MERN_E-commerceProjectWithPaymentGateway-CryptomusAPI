@@ -53,3 +53,61 @@ const SingleProductScreen = () => {
     e.preventDefault();
     dispatch(createProductReview(productId, { rating, comment }));
   };
+  return (
+    <Layout>
+      <Header className="justify-between">
+        <BackButton url="/" text="BACK TO SHOP" />
+        <div className="flex items-center divide-x divide-gray-200 border-x border-b border-gray-200">
+          <button className="px-5 font-semibold py-6 lg:px-10">
+            SHARE THIS
+          </button>
+          <Cart className="hidden lg:block p-6 text-palette-graniteGray" />
+          <UserProfileButton className="hidden lg:block p-6 text-palette-graniteGray" />
+        </div>
+      </Header>
+      <main className="container mx-auto px-5 py-8 md:px-14 md:py-16">
+        {loading ? (
+          <div className="flex">
+            <button className="mx-auto btn loading bg-transparent text-gray-700 border-none">
+              Loading...
+            </button>
+          </div>
+        ) : error ? (
+          <div className="alert alert-error shadow-lg">
+            <div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="stroke-current flex-shrink-0 h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span>{error}</span>
+            </div>
+          </div>
+        ) : (
+          <>
+            <ProductDetail product={product} />
+            <div className="mt-10">
+              <h2 className="text-2xl font-semibold">Reviews</h2>
+              {product.reviews.length === 0 && (
+                <Alert className="mt-5">No Reviews</Alert>
+              )}
+              <ul>
+                {product.reviews.map((review) => (
+                  <li key={review._id} className="flex flex-col mt-5">
+                    <span className="font-semibold">{review.name}</span>
+                    <Rating
+                      className="flex items-center text-palette-chineseBlack"
+                      initialRating={review.rating}
+                      readonly={true}
+                      fractions={2}
+                      emptySymbol={<AiOutlineStar />}
+                      fullSymbol={<AiFillStar />}
+                    />
