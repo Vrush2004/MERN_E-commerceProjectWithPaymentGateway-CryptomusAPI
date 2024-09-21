@@ -69,3 +69,60 @@ const ProductDetail = ({ product }) => {
             />
           </ProductSingleImage>
         </div>
+        <div className="flex flex-col justify-center items-start lg:px-5">
+          <h2 className="font-semibold uppercase text-lg xl:text-xl 2xl:text-2xl text-palette-chineseBlack">
+            {product.name}
+          </h2>
+          <div className="flex items-center mt-3">
+            <Rating
+              className="flex items-center text-palette-chineseBlack"
+              initialRating={product.rating}
+              readonly={true}
+              fractions={2}
+              emptySymbol={<AiOutlineStar />}
+              fullSymbol={<AiFillStar />}
+            />
+            <span className="block text-base font-medium text-palette-chineseBlack">
+              ({product.numReviews} Reviews)
+            </span>
+          </div>
+          <p className="text-palette-graniteGray mt-7">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua Egestas
+            purus viverra accumsan in nisl nisi Arcu cursus vitae congue mauris
+            rhoncus aenean vel elit scelerisque
+          </p>
+          <span className="font-bold text-palette-chineseBlack text-3xl mt-7">
+            ${(Math.round(product.price * 100) / 100).toFixed(2)}
+          </span>
+          <div className="flex flex-wrap mt-7 gap-5">
+            {product.countInStock > 0 ? (
+              <>
+                <QuantityInput
+                  className="text-[1.4rem]"
+                  productQuantity={productQuantity}
+                  countInStock={product.countInStock}
+                  setErrorFn={setError}
+                  setProductQuantityFn={setProductQuantity}
+                />
+                <button
+                  onClick={addToCartHandler}
+                  className="py-3 px-6 bg-palette-chineseBlack text-white"
+                >
+                  ADD TO CART
+                </button>
+              </>
+            ) : (
+              <p className="text-red-500 font-semibold text-xl">Out Of Stock</p>
+            )}
+          </div>
+          {error && error?.type === "IN_STOCK" && (
+            <p className="text-red-500 text-xs mt-3">{error?.message}</p>
+          )}
+        </div>
+      </section>
+    </>
+  );
+};
+
+export default ProductDetail;
