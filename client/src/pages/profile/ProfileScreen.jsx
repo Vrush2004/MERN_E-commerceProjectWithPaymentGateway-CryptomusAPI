@@ -134,3 +134,75 @@ const ProfileScreen = () => {
                 onChange={inputChangeHandler}
               />
             </div>
+            <div className="form-control">
+              <label className="label" htmlFor="confirmPassword">
+                <span className="label-text">Confirm Password</span>
+              </label>
+              <input
+                className="input input-bordered"
+                id="confirmPassword"
+                type="password"
+                placeholder="Enter Confirm password"
+                value={inputValues.confirmPassword}
+                name="confirmPassword"
+                onChange={inputChangeHandler}
+              />
+            </div>
+            <button
+              type="submit"
+              disabled={loading}
+              className="btn w-full mt-5"
+            >
+              {loading ? "Loading..." : "Update"}
+            </button>
+          </form>
+        </div>
+        <div className="w-full mt-10 lg:mt-0 lg:w-9/12">
+          <h2 className="text-3xl mb-6">My Orders</h2>
+          <div className="flex flex-col space-y-2">
+            {errorOrders && <Alert variant="error">{errorOrders}</Alert>}
+          </div>
+          <div>
+            {loadingOrders ? (
+              <Loader />
+            ) : (
+              <div className="flex flex-col">
+                <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                  <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+                    <div className="overflow-hidden border border-gray-200  md:rounded-lg">
+                      <table className="min-w-full divide-y divide-gray-200">
+                        <thead className="bg-gray-50 dark:bg-gray-800">
+                          <tr>
+                            <th
+                              scope="col"
+                              className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
+                            >
+                              <div className="flex items-center gap-x-3">
+                                <span>ID</span>
+                              </div>
+                            </th>
+
+                            <th
+                              scope="col"
+                              className="px-12 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
+                            >
+                              <div className="flex items-center gap-x-3">
+                                <span>DATE</span>
+                              </div>
+                            </th>
+
+                            <th
+                              scope="col"
+                              className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
+                            >
+                              <div className="flex items-center gap-x-3">
+                                <span>TOTAL</span>
+                              </div>
+                            </th>
+
+                            <th
+                              scope="col"
+                              className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
+                            >
+                              PAID
+                            </th>
