@@ -69,3 +69,85 @@ const UserEditScreen = () => {
       return { ...curState, [name]: value };
     });
   };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    dispatch(updateUser({ _id: userId, ...inputValues }));
+  };
+
+  return (
+    <Layout>
+      <Header className="justify-between">
+        <BackButton url="/admin/userlist" text="GO BACK" />
+        <div className="flex items-center divide-x divide-gray-200 border-x border-b border-gray-200">
+          <Cart className="hidden lg:block p-6 text-palette-graniteGray" />
+          <UserProfileButton className="hidden lg:block p-6 text-palette-graniteGray" />
+        </div>
+      </Header>
+      <FormContainer className="py-10 px-5">
+        <h1 className="text-3xl mb-6">Edit User</h1>
+        {errorUpdate && <Alert variant="error">{errorUpdate}</Alert>}
+        {loading ? (
+          <Loader />
+        ) : error ? (
+          <Alert variant="error">{error}</Alert>
+        ) : (
+          <form onSubmit={submitHandler}>
+            <div className="form-control">
+              <label className="label" htmlFor="name">
+                <span className="label-text">Name</span>
+              </label>
+              <input
+                className="input input-bordered"
+                id="name"
+                type="text"
+                placeholder="Enter your name"
+                value={inputValues.name}
+                name="name"
+                onChange={inputChangeHandler}
+              />
+            </div>
+            <div className="form-control">
+              <label className="label" htmlFor="email">
+                <span className="label-text">Email Address</span>
+              </label>
+              <input
+                className="input input-bordered"
+                id="email"
+                type="email"
+                placeholder="Enter email"
+                value={inputValues.email}
+                name="email"
+                onChange={inputChangeHandler}
+              />
+            </div>
+            <div className="form-control">
+              <label className="cursor-pointer label flex justify-start gap-x-3">
+                <span className="label-text">Is Admin</span>
+                <input
+                  type="checkbox"
+                  checked={inputValues.isAdmin}
+                  className="checkbox checkbox-accent"
+                  onChange={(e) =>
+                    setInputValues((curState) => {
+                      return { ...curState, isAdmin: e.target.checked };
+                    })
+                  }
+                />
+              </label>
+            </div>
+            <button
+              type="submit"
+              disabled={loadingUpdate}
+              className="btn w-full mt-5"
+            >
+              {loadingUpdate ? "Loading..." : "Update"}
+            </button>
+          </form>
+        )}
+      </FormContainer>
+    </Layout>
+  );
+};
+
+export default UserEditScreen;
