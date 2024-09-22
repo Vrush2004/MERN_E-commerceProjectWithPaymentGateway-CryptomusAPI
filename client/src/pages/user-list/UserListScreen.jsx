@@ -124,3 +124,60 @@ const UserListScreen = () => {
                             </div>
                           </div>
                         </td>
+                        <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                          <div className="inline-flex items-center gap-x-3">
+                            <div className="flex items-center gap-x-2">
+                              <div>
+                                <h2 className="font-medium text-gray-800">
+                                  <a href={`mailto:${user.email}`}>
+                                    {user.email}
+                                  </a>
+                                </h2>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                        <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                          <div className="inline-flex items-center gap-x-3">
+                            <div className="flex items-center gap-x-2">
+                              <div>
+                                <h2 className="font-medium text-gray-800">
+                                  {user.isAdmin ? (
+                                    <BsCheckLg className="text-green-500" />
+                                  ) : (
+                                    <RxCross1 className="text-red-500" />
+                                  )}
+                                </h2>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                        <td class="px-4 py-4 text-sm whitespace-nowrap">
+                          <div class="flex space-x-2 items-center gap-x-6">
+                            <Link
+                              to={`/admin/user/${user._id}/edit`}
+                              class="text-gray-600 transition-colors duration-200 hover:text-green-500 focus:outline-none"
+                            >
+                              <AiOutlineEdit className="h-5 w-auto" />
+                            </Link>
+                            <button
+                              onClick={() => deleteHandler(user._id, user.name)}
+                            >
+                              <AiOutlineDelete className="h-5 w-auto text-red-500" />
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        )}
+      </section>
+    </Layout>
+  );
+};
+
+export default UserListScreen;
