@@ -70,11 +70,11 @@ const HomeScreen = () => {
 
   return (
     <Layout>
-      <Header className="flex flex-col-reverse gap-y-2 lg:flex-row lg:items-center lg:gap-x-5 lg:justify-between">
+      <Header className="flex flex-col-reverse gap-y-2 lg:flex-row lg:items-center lg:gap-x-5 lg:justify-between w-full">
         <div className="w-full lg:max-w-sm">
           <SearchBox />
         </div>
-        <div className="flex items-center justify-between divide-x divide-gray-200 border-x border-b border-gray-200">
+        <div className="flex items-center justify-between divide-x divide-gray-200 border-x border-b border-gray-200 max-w-full">
           <FilterProducts
             activeViewMode={viewMode}
             viewModes={viewModes}

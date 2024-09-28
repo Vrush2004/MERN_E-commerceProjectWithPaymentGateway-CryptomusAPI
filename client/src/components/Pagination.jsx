@@ -10,9 +10,9 @@ const Pagination = ({
 }) => {
   return (
     pages > 1 && (
-      <div class={`flex justify-center ${className}`}>
+      <div className={`flex justify-center ${className}`}>
         {page === 1 ? (
-          <span class="select-none flex items-center px-4 py-2 mx-1 text-gray-500 bg-white rounded-md cursor-not-allowed">
+          <span className="select-none flex items-center px-4 py-2 mx-1 text-gray-500 bg-white rounded-md cursor-not-allowed">
             Previous
           </span>
         ) : (
@@ -24,7 +24,7 @@ const Pagination = ({
                   : `/page/${page - 1}`
                 : `/admin/productlist/${page - 1}`
             }
-            class="flex items-center px-4 py-2 mx-1 text-gray-700 transition-colors duration-300 transform bg-white rounded-md"
+            className="flex items-center px-4 py-2 mx-1 text-gray-700 transition-colors duration-300 transform bg-white rounded-md"
           >
             Previous
           </Link>
@@ -40,7 +40,7 @@ const Pagination = ({
                   : `/page/${x + 1}`
                 : `/admin/productlist/${x + 1}`
             }
-            class={`${
+            className={`${
               x + 1 === page
                 ? "bg-gray-800 text-white"
                 : "bg-white text-gray-700"
@@ -50,7 +50,7 @@ const Pagination = ({
           </Link>
         ))}
         {page === pages ? (
-          <span class="select-none flex items-center px-4 py-2 mx-1 text-gray-500 bg-white rounded-md cursor-not-allowed">
+          <span className="select-none flex items-center px-4 py-2 mx-1 text-gray-500 bg-white rounded-md cursor-not-allowed">
             Next
           </span>
         ) : (
@@ -62,7 +62,7 @@ const Pagination = ({
                   : `/page/${page + 1}`
                 : `/admin/productlist/${page + 1}`
             }
-            class="flex items-center px-4 py-2 mx-1 text-gray-700 transition-colors duration-300 transform bg-white rounded-md"
+            className="flex items-center px-4 py-2 mx-1 text-gray-700 transition-colors duration-300 transform bg-white rounded-md"
           >
             Next
           </Link>

@@ -84,7 +84,7 @@ const Footer = () => {
       </div>
       <div className="py-10">
         <p className="text-center text-palette-graniteGray">
-          &copy; 2024. created by Moonfo
+          &copy; 2024. created by Vrush❤️
         </p>
       </div>
     </footer>

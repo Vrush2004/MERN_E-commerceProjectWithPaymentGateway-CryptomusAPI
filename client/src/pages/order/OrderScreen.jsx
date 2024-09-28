@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
 
 import Loader from "../../components/Loader";
 import Alert from "../../components/Alert";
