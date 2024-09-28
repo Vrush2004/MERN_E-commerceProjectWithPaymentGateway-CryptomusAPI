@@ -31,7 +31,7 @@ const Sidebar = () => {
     <>
       <div
         ref={sideBarRef}
-        className="sticky top-0 z-30 bg-palette-chineseBlack text-white lg:h-screen"
+        className="sticky top-0 z-30 bg-gray-800 text-white lg:h-screen"
       >
         <div className="flex flex-row lg:flex-col justify-between items-center w-full h-full p-5">
           <div className="flex items-center space-x-4 lg:space-x-0">
@@ -61,7 +61,7 @@ const Sidebar = () => {
           <ul className="hidden lg:block space-y-2">
             <li>
               <a
-                href="https://twitter.com/mmdrz003"
+                href=""
                 target="_blank"
                 rel="noreferrer"
               >
@@ -70,7 +70,7 @@ const Sidebar = () => {
             </li>
             <li>
               <a
-                href="https://github.com/mohammadrz003"
+                href="https://github.com/Vrush2004"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -79,7 +79,7 @@ const Sidebar = () => {
             </li>
             <li>
               <a
-                href="https://www.instagram.com/moonfo_dev/"
+                href=""
                 target="_blank"
                 rel="noreferrer"
               >

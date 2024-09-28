@@ -70,12 +70,12 @@ const RegisterScreen = () => {
           {error && <Alert variant="error">{error}</Alert>}
         </div>
         <form onSubmit={submitHandler}>
-          <div className="form-control">
-            <label className="label" htmlFor="name">
+          <div className="form-control flex flex-col">
+            <label className="label text-left mb-1" htmlFor="name">
               <span className="label-text">Name</span>
             </label>
             <input
-              className="input input-bordered"
+              className="input input-bordered p-3 mb-2 border border-gray-300 rounded"
               id="name"
               type="text"
               placeholder="Enter your name"
@@ -84,12 +84,12 @@ const RegisterScreen = () => {
               onChange={inputChangeHandler}
             />
             </div>
-          <div className="form-control">
-            <label className="label" htmlFor="email">
+          <div className="form-control flex flex-col">
+            <label className="label text-left mb-1" htmlFor="email">
               <span className="label-text">Email Address</span>
             </label>
             <input
-              className="input input-bordered"
+              className="input input-bordered p-3 mb-2 border border-gray-300 rounded"
               id="email"
               type="email"
               placeholder="Enter email"
@@ -98,12 +98,12 @@ const RegisterScreen = () => {
               onChange={inputChangeHandler}
             />
           </div>
-          <div className="form-control">
-            <label className="label" htmlFor="password">
+          <div className="form-control flex flex-col">
+            <label className="label text-left mb-1" htmlFor="password">
               <span className="label-text">Pasword</span>
             </label>
             <input
-              className="input input-bordered"
+              className="input input-bordered p-3 mb-2 border border-gray-300 rounded"
               id="password"
               type="password"
               placeholder="Enter password"
@@ -112,12 +112,12 @@ const RegisterScreen = () => {
               onChange={inputChangeHandler}
             />
           </div>
-          <div className="form-control">
-            <label className="label" htmlFor="confirmPassword">
+          <div className="form-control flex flex-col">
+            <label className="label text-left mb-1" htmlFor="confirmPassword">
               <span className="label-text">Confirm Password</span>
             </label>
             <input
-              className="input input-bordered"
+              className="input input-bordered p-3 mb-2 border border-gray-300 rounded"
               id="confirmPassword"
               type="password"
               placeholder="Enter Confirm password"
@@ -126,7 +126,7 @@ const RegisterScreen = () => {
               onChange={inputChangeHandler}
             />
           </div>
-          <button type="submit" disabled={loading} className="btn w-full mt-5">
+          <button type="submit" disabled={loading} className="btn w-full mt-5 bg-gray-800 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded">
             {loading ? "Loading..." : "Register"}
           </button>
         </form>

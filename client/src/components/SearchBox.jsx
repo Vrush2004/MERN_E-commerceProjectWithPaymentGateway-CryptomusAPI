@@ -24,12 +24,12 @@ const SearchBox = () => {
             name="q"
             onChange={(e) => setKeyword(e.target.value)}
             placeholder="Search Products..."
-            className="input input-bordered flex-1"
+            className="input input-bordered flex-1 p-4 border border-gray-300 rounded"
           />
           <button type="submit" className="btn btn-square">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
+              className="ml-1 h-6 w-6"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"

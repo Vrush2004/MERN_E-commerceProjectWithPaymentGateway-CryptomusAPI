@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { Link, redirect, useNavigate, useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import Alert from "../../components/Alert";
@@ -33,10 +33,9 @@ const LoginScreen = () => {
 
   const inputChangeHandler = (e) => {
     const { value, name } = e.target;
-    setInputValues((curState) => ({
-      ...curState,
-      [name]: value,
-    }));
+    setInputValues((curState) => {
+      return { ...curState, [name]: value };
+    });
   };
 
   const submitHandler = (e) => {
@@ -52,57 +51,52 @@ const LoginScreen = () => {
           <UserProfileButton className="hidden lg:block p-6 text-palette-graniteGray" />
         </div>
       </Header>
-      <FormContainer className="flex flex-col items-center justify-center py-10 px-5 bg-white rounded-lg shadow-lg max-w-md mx-auto">
-        <h1 className="text-4xl font-semibold mb-4 text-center text-gray-800">Sign In</h1>
-        {error && <Alert variant="error" className="mb-4">{error}</Alert>}
-        <form onSubmit={submitHandler} className="w-full">
-          <div className="form-control mb-4">
-            <label className="label text-gray-600" htmlFor="email">
-              Email Address
+      <FormContainer className="py-10 px-5">
+        <h1 className="text-3xl mb-6">Sign In</h1>
+        {error && <Alert variant="error">{error}</Alert>}
+        <form onSubmit={submitHandler}>
+          <div className="form-control flex flex-col ">
+            <label className="label text-left mb-1" htmlFor="email">
+              <span className="label-text ">Email Address</span>
             </label>
             <input
-              className="input input-bordered w-full focus:ring-2 focus:ring-blue-500 transition duration-150 ease-in-out"
+              className="input input-bordered p-3 mb-2 border border-gray-300 rounded"
               id="email"
               type="email"
-              placeholder="Enter your email"
+              placeholder="Enter email"
               value={inputValues.email}
               name="email"
               onChange={inputChangeHandler}
-              required
             />
           </div>
-          <div className="form-control mb-6">
-            <label className="label text-gray-600" htmlFor="password">
-              Password
+          <div className="form-control flex flex-col ">
+            <label className="label text-left mb-1" htmlFor="password">
+              <span className="label-text">Pasword</span>
             </label>
             <input
-              className="input input-bordered w-full focus:ring-2 focus:ring-blue-500 transition duration-150 ease-in-out"
+              className="input input-bordered p-3 border border-gray-300 rounded"
               id="password"
               type="password"
-              placeholder="Enter your password"
+              placeholder="Enter password"
               value={inputValues.password}
               name="password"
               onChange={inputChangeHandler}
-              required
             />
           </div>
-          <button
-            type="submit"
-            disabled={loading}
-            className="btn w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-md transition duration-150 ease-in-out"
-          >
+          <button type="submit" disabled={loading} className="btn w-full mt-5 bg-gray-800 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded">
             {loading ? "Loading..." : "Sign In"}
           </button>
         </form>
-        <div className="py-4 text-center">
-          <p className="text-gray-600">New Customer?{" "}
+        <div className="py-3">
+          <div>
+            New Customer?{" "}
             <Link
               to={redirect ? `/register?redirect=${redirect}` : "/register"}
-              className="text-blue-500 hover:underline"
+              className="link"
             >
-              Create an Account
+              Register
             </Link>
-          </p>
+          </div>
         </div>
       </FormContainer>
     </Layout>
